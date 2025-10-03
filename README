@@ -1,0 +1,140 @@
+Copyright (C) 2007-2016 Rafael Durbano Lobato
+
+This piece of software implements the method "Recursive Partitioning
+Algorithm" described in [1] for solving the Manufacturer's Pallet
+Loading Problem (packing identical rectangles in rectangles).
+
+[1] E. G. Birgin, R. D. Lobato and R. Morabito. An effective
+    recursive partitioning approach for the packing of identical
+    rectangles in a rectangle. Journal of the Operational Research
+    Society (2010) 61, 306-320.
+
+This software and a copy of the article [1] can be found either at
+
+http://lobato.it/packing/
+
+or
+
+http://lobato.it/.
+
+Table of Contents
+=================
+
+   1. Description of the files
+   2. How to compile
+   3. How to run
+   4. How to generate the graphical representation of the solution
+   5. License
+   6. Contact information
+
+1. Description of the files
+===========================
+
+-> RecPartAlgorithm.cpp bd.cpp bd.h draw.cpp draw.h draw_bd.cpp draw_bd.h
+   graphics.cpp graphics.h sets.cpp sets.h util.cpp util.h
+
+Implement the "Recursive Partitioning Algorithm" for solving the
+Manufacturer's Pallet Loading Problem.
+
+-> Makefile
+
+The makefile to compile the program.
+
+-> solution.tex 
+
+A Latex file to generate a PDF file with the graphical representation
+of the solution.
+
+2. How to compile
+=================
+
+Type make or
+
+g++ -O3 RecPartAlgorithm.cpp bd.cpp draw.cpp draw_bd.cpp graphics.cpp \
+        sets.cpp util.cpp -o RecPartAlgorithm
+
+to compile the program.
+
+3. How to run
+=============
+
+Just type
+
+./RecPartAlgorithm
+
+The program will ask you L and W, the dimensions of the rectangular
+pallet satisfying L >= W. Then, it will ask you l and w, the dimensions
+of the rectangular item to be packed, also satisfying l >= w.
+
+After having entered the data of the problem, the program will answer
+the number of packed rectangles. It will also generate a MetaPost file
+called solution.mp with a graphical representation of the solution.
+Alternatively, it will also produce a file called solution.svg with a
+graphical representation of the solution in SVG (Scalable Vector
+Graphics) format.
+
+For example, to run the Recursive Partitioning Algorithm to solve the
+problem (L,W,l,w) = (49,28,8,3), you must type:
+
+./RecPartAlgorithm
+L and W: 49 28
+l and w: 8 3
+
+And the output will be something like this:
+
+Phase 1 (Five-block Algorithm)
+ - solution found: 56 boxes.
+ - runtime:        0.00 second.
+
+Phase 2 (L-Algorithm)
+ - solution found: 57 boxes.
+ - runtime:        0.26 second.
+
+Solution found: 57 boxes.
+Computed upper bound: 57 boxes.
+Proven optimal solution.
+Runtime: 0.26 second.
+
+4. How to generate the graphical representation of the solution
+===============================================================
+
+The program creates two files (namely solution.mp and solution.svg)
+that graphically represent the solution in MetaPost and SVG format,
+respectivelly. There are two options for visualizing the solution
+found. The first one is by simply using some SVG viewer to view the
+file solution.svg. For the second option, you need MetaPost and a
+Latex implementation installed on your system. Then compile the file
+solution.tex in the same directory of solution.mp.
+
+mpost solution.mp
+latex solution.tex
+
+It creates a file called solution.dvi which can be xvisualized with a
+DVI viewer. If you wish, you can convert this file into a PDF file:
+
+dvipdf solution.dvi
+
+5. License
+==========
+
+This file is part of Recursive Partitioning Algorithm.
+
+Recursive Partitioning Algorithm is free software: you can
+redistribute it and/or modify it under the terms of the GNU General
+Public License as published by the Free Software Foundation, either
+version 3 of the License, or (at your option) any later version.
+
+Recursive Partitioning Algorithm is distributed in the hope that it
+will be useful, but WITHOUT ANY WARRANTY; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Recursive Partitioning Algorithm. If not, see
+<http://www.gnu.org/licenses/>.
+
+6. Contact information
+======================
+
+Rafael Durbano Lobato <rafael@lobato.it>
+http://lobato.it/
